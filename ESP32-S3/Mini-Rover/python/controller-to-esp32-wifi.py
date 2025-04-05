@@ -7,6 +7,7 @@ WHEELBASE = 16.0  # in cm
 TRACK_WIDTH = 2.4  # in cm
 R_MIN = 20.0  # Tightest turn radius (cm)
 R_MAX = 200.0  # Largest turn radius (cm)
+THRESHOLD = 0.1  # Small threshold to avoid accidental trigger activation
 
 # ESP32 Wi-Fi settings
 ESP32_IP = "192.168.1.92"  # Update to the ESP32's actual IP
@@ -71,6 +72,11 @@ def ackerman_angles(steeringInput):
             clamp(90 - rear_inner_angle)    # Rear-right
         ]
 
+def normalize_triggers(rtRaw, ltRaw):
+    rt = (rtRaw + 1) / 2.0
+    lt = (ltRaw + 1) / 2.0
+    return [rt, lt]
+
 running = True
 
 while running:
@@ -86,10 +92,29 @@ while running:
     steeringInput = controller.get_axis(0)  # Left thumbstick
     steeringAngles = ackerman_angles(steeringInput)
     
-    command = f"S,{int(round(steeringAngles[0]))},{int(round(steeringAngles[1]))},{int(round(steeringAngles[2]))},{int(round(steeringAngles[3]))},{int(round(steeringAngles[4]))},{int(round(steeringAngles[5]))}"
-    send_command(command)
+    steerCommand = f"S,{int(round(steeringAngles[0]))},{int(round(steeringAngles[1]))},{int(round(steeringAngles[2]))},{int(round(steeringAngles[3]))},{int(round(steeringAngles[4]))},{int(round(steeringAngles[5]))}"
+    send_command(steerCommand)
 
-    time.sleep(0.05)
+    rtRaw = controller.get_axis(5)
+    ltRaw = controller.get_axis(4)
+
+    # Print raw trigger values read from the xbox controller
+    # rt_raw = controller.get_axis(5)
+    # lt_raw = controller.get_axis(2)
+    # print("Right Trigger Raw:", rt_raw, "Left Trigger Raw:", lt_raw)
+
+    rt, lt = normalize_triggers(rtRaw, ltRaw)
+
+    if rt < THRESHOLD and lt < THRESHOLD:
+        motorSpeed = 0
+    else:
+        motorSpeed = int((rt - lt) * 255)
+    
+    driveCommand = f"M,{int(round(motorSpeed))}"
+    send_command(driveCommand)
+
+    # time.sleep(0.05)
+    time.sleep(0.01)
 
 pygame.quit()
 sock.close()
