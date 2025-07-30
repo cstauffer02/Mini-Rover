@@ -7,7 +7,7 @@ A custom-designed 3D-printed rover that uses a rocker-bogie suspension system an
 ## 🚀 Features
 
 - 🧩 **3D-Printed Chassis**: Custom-designed in PETG for strength and durability.
-- 🛞 **Rocker-Bogie Suspension**: Enables smooth traversal over uneven terrain.
+- 🦿 **Rocker-Bogie Suspension**: Enables smooth traversal over uneven terrain.
 - 📶 **Wi-Fi Control**: Xbox One controller is used to control the rover via Wi-Fi.
 - 🧠 **ESP32 Microcontroller**: Acts as the brain of the rover.
 - ⏱ **Real-Time Performance**: Uses FreeRTOS for multitasking motor control and network communication.
