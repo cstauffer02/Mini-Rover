@@ -19,30 +19,30 @@ A custom-designed 3D-printed rover that uses a rocker-bogie suspension system an
 
 Mini-Rover/
 ├── assets/
-│   └── images/                     # Photos of the rover (e.g., demo shots, internals)
-│       ├── Component-Mounting.jpg
-│       ├── Mini-Rover.jpg
-│       └── Rover-Guts.jpg
+│ └── images/ # Photos of the rover (e.g., demo shots, internals)
+│ ├── Component-Mounting.jpg
+│ ├── Mini-Rover.jpg
+│ └── Rover-Guts.jpg
 │
 ├── ESP32-S3/
-│   └── Mini-Rover/                # Main PlatformIO project directory
-│       ├── include/               # Header files
-│       ├── lib/                   # Libraries for I2C, L298N, PCA9685 motor control
-│       │   ├── I2C/
-│       │   ├── L298N/
-│       │   └── PCA9685/
-│       ├── python/                # Python scripts to interface with Xbox controller
-│       │   ├── controller-read-test.py
-│       │   └── controller-to-esp32-wifi.py
-│       ├── src/
-│       │   └── main.c             # FreeRTOS-based firmware
-│       ├── test/                  # Test configurations
-│       ├── .vscode/               # VSCode project settings
-│       ├── platformio.ini         # PlatformIO configuration file
-│       └── sdkconfig.defaults     # ESP-IDF SDK configuration
+│ └── Mini-Rover/ # Main PlatformIO project directory
+│ ├── include/ # Header files
+│ ├── lib/ # Libraries for I2C, L298N, PCA9685 motor control
+│ │ ├── I2C/
+│ │ ├── L298N/
+│ │ └── PCA9685/
+│ ├── python/ # Python scripts to interface with Xbox controller
+│ │ ├── controller-read-test.py
+│ │ └── controller-to-esp32-wifi.py
+│ ├── src/
+│ │ └── main.c # FreeRTOS-based firmware
+│ ├── test/ # Test configurations
+│ ├── .vscode/ # VSCode project settings
+│ ├── platformio.ini # PlatformIO configuration file
+│ └── sdkconfig.defaults # ESP-IDF SDK configuration
 │
-├── README.md                      # Project overview and documentation
-└── .gitignore                     # Files to exclude from Git tracking
+├── README.md # Project overview and documentation
+└── .gitignore # Files to exclude from Git tracking
 
 ---
 
