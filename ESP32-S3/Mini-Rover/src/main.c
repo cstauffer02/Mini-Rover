@@ -1,5 +1,5 @@
 /* Author: Cameron Stauffer
-** Last Edited: April 1, 2025
+** Last Edited: April 4, 2025
 **
 ** Description: This program writes a sinewave to 6 srevo motors, phase-shifted
 ** by 30 degrees. The program serves as a starting point to what will eventually 
