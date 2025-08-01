@@ -10,7 +10,7 @@ TRACK_WIDTH = 2.4  # in cm
 R_MIN = 20.0  # Tightest turn radius (cm)
 R_MAX = 200.0  # Largest turn radius (cm)
 THRESHOLD = 0.1  # Small threshold to avoid accidental trigger activation
-ESP32_IP = "192.168.1.73"  # Update to the ESP32's actual IP
+ESP32_IP = "192.168.4.1"  # Update to the ESP32's actual IP
 ESP32_PORT = 8080           # Port the ESP32 server listens on
 
 # Initialize UDP socket
