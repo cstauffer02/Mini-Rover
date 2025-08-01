@@ -118,8 +118,8 @@ void app_main() {
     printf("i2c master initialized\n");
     pca9685_init();
     init_motor_controllers(&board1, &board2, &board3);
-    wifi_init();
-    print_ip_address();
+    wifi_init_softap();
+    print_softap_ip_udp();
 
     xTaskCreate(udp_server_task, "udp_server_task", 4096, NULL, 5, NULL);
 }
